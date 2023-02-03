@@ -59,7 +59,7 @@ streamlit.stop()
 streamlit.header("The fruit load list from Snowflake contains:")
 
 #snowflake connector 
-if streamlit.button('Get Fruit Load List')
+if streamlit.button('Get Fruit Load List'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     streamlit.dataframe(my_data_rows)
 
