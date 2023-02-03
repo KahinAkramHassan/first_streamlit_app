@@ -25,8 +25,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 
-#New Section to display fruityvice api response 
-
 
 #Updated version
 
@@ -40,7 +38,10 @@ def get_fruit_load_list():
         my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
         return my_cur.fetchall()
     
-
+def insert_row_snowflake(new_fruit):
+    with my_cnx.cursor() as my_curr:
+        my_cur.execute("insert into fruit_load_list values('from streamlist!')")
+        return "Thanks for adding" + new_fruit
 
 streamlit.header('Fruityvice Fruit Advice!')
 try:
@@ -65,8 +66,10 @@ if streamlit.button('Get Fruit Load List'):
 
 
 streamlit.header('What fruit would you like to add?')
-added_fruit = streamlit.text_input('What fruit would you like to add?', 'kiwi')
-streamlit.write('Thanks for adding: ', added_fruit)
 
-#will not work for now..
-my_cur.execute("insert into fruit_load_list values('from streamlist!')")
+added_fruit = streamlit.text_input('What fruit would you like to add?', 'kiwi')
+
+if streamlit.button('Add a Fruit to the list');
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    back_from_func = insert_row_snowflake(added_fruit)
+    streamlit.write(back_from_func)
